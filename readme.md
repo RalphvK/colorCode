@@ -101,7 +101,7 @@ To set or get the color in rgb format, use the ```rgb()``` method.
 When a value is provided to the method, it parses the CSS rgb or rgba string to set the color.
 
 ```javascript
-color.parseRgb('rgba(162,222,208,0.5)');
+color.rgb('rgba(162,222,208,0.5)');
 ```
 
 ### Getter
