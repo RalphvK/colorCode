@@ -6,10 +6,10 @@ Conversion tool example: [https://ravk.nl/colorcode](https://ravk.nl/colorcode)
 
 ## Basic Usage Example
 
-A simple example using the colorCode class to convert to an rgba value to a hex value:
+A simple example using the colorCode class to convert a color to a hex value:
 
 ```javascript
-var color = new colorCode().rgb('rgba(162,222,208,0.9)');
+var color = new colorCode(162,222,208,0.9);
 return color.hex();
 ```
 
