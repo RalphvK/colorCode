@@ -47,7 +47,7 @@ class colorCode {
             this.green = this.hexToNumber(channels[1]);
             this.blue = this.hexToNumber(channels[2]);
             // setting alpha channel if available
-            this.alpha = (channels[3] !== undefined) ? this.hexAlphaToDec(channels[3]) : undefined;
+            this.alpha = (channels[3] !== undefined) ? this.hexToOpacity(channels[3]) : undefined;
         // 3 character shorthand strings
         } else if (hex.length == 3) {
             // splitting channels
@@ -155,8 +155,11 @@ class colorCode {
     }
     
     // hex alpha to decimal
-    hexAlphaToDec(hex) {
-        return this.round(this.hexToNumber(hex) / 255, 2);
+    hexToOpacity(hex) {
+        // getting scale
+        var scale = Math.pow(16, hex.length) - 1;
+        // calculating decimal value
+        return this.round(this.hexToNumber(hex) / scale, 2);
     }
 
     // hex to number
