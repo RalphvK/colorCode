@@ -1,6 +1,6 @@
 # colorCode.js
 
-A color conversion class with support for 8 digit HEX rgb + alpha codes.
+A color conversion class with support for 4 and 8 digit CSS4 HEX rgb + alpha codes.
 
 Conversion tool example: [https://ravk.nl/colorcode](https://ravk.nl/colorcode)
 
@@ -79,6 +79,12 @@ When a value is provided to the method, it parses the hex string to set the colo
 
 ```javascript
 color.hex('#a2ded07f');
+```
+
+In addition to six and eight digit hex codes, three (standard) and four (with alpha channel) codes are also supported.
+
+```javascript
+color.hex('#aed7');
 ```
 
 ### Getter

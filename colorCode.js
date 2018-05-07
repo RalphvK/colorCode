@@ -48,14 +48,16 @@ class colorCode {
             this.blue = this.hexToNumber(channels[2]);
             // setting alpha channel if available
             this.alpha = (channels[3] !== undefined) ? this.hexToOpacity(channels[3]) : undefined;
-        // 3 character shorthand strings
-        } else if (hex.length == 3) {
+        // 3 and 4 character shorthand strings
+        } else if (hex.length == 3 || hex.length == 4) {
             // splitting channels
             var channels = this.splitString(hex, 1);
             // setting color channels
             this.red = this.hexToNumber(channels[0] + channels[0]);
             this.green = this.hexToNumber(channels[1] + channels[1]);
             this.blue = this.hexToNumber(channels[2] + channels[2]);
+            // setting alpha channel if available
+            this.alpha = (channels[3] !== undefined) ? this.hexToOpacity(channels[3]) : undefined;
         // else throw error
         } else {
             throw "Invalid HEX string provided to parseHex()! Provided: "+hex;
