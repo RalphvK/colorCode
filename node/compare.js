@@ -46,8 +46,6 @@ inputA.ask(function (answer) {
     inputB.ask(function (answer) {
         var colorB = answer;
         var diff = compare(colorA, colorB);
-        var HSL = new colorCode(colorB).getHsl();
-        console.log('\n\nHSL: ' + HSL);
         console.log('\n\nHue: ' + diff[0]);
         console.log('Sat: ' + diff[1]);
         console.log('Lit: ' + diff[2]);
