@@ -120,3 +120,28 @@ return color.rgb();
 ```javascript
 'rgba(162,222,208,0.5)' // return
 ```
+
+### Comparing two colors
+
+When converting a design into code, you might want it to be as dynamic as possible. Often you might have two similar colors that are relative two eachother, but are unsure how to get from one to the other, meaning you cannot arrive at color B from color A through color operations in SCSS. The method ```.hslDeltaTo(object)``` allows you to get the required change in percentage for hue, saturation and lightness (HSL) to arrive at the given color. For example:
+
+```javascript
+var colorA = new colorCode('#3e45f9');
+var colorB = new colorCode('#6b55fa');
+// get percentage values required to transform color A into color B with HSL operations
+colorA.hslDeltaTo(colorB);
+```
+
+returns:
+
+```javascript
+[ "4.545454545454546%", "0%", "8.19672131147541%" ]
+```
+
+This means in order to get from colorA to colorB, you must:
+
+* Increase hue by ~4.55%
+* Saturation remains the same
+* Increase lightness by ~8.2%
+
+This can be used to write SCSS that will automatically derive colorB from colorA, making these two colors fully dynamic even without additional information from the designer.
