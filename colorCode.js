@@ -39,6 +39,19 @@ class colorCode {
         return getHsl();
     }
 
+    // compare with another colorCode object
+    // returns difference in hue, saturation and lightness in percentages
+    // helps you transform color A into B through hue, saturation and lightness operations in scss
+    hslDelta(object) {
+        var a = this.rgbToHsl(this.red, this.green, this.blue);
+        var b = object.rgbToHsl(object.red, object.green, object.blue);
+        var diff = [];
+        diff[0] = (parseInt(b[0]) - parseInt(a[0])) / parseInt(a[0]) * 100 + '%';
+        diff[1] = (parseInt(b[1]) - parseInt(a[1])) / parseInt(a[1]) * 100 + '%';
+        diff[2] = (parseInt(b[2]) - parseInt(a[2])) / parseInt(a[2]) * 100 + '%';
+        return diff;
+    }
+
     // parse HEX string to set properties
     parseHex(hex) {
         // removing pound symbol if present
