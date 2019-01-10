@@ -51,8 +51,8 @@ var colorCode = class {
         var b = object.rgbToHsl(object.red, object.green, object.blue);
         var diff = [];
         diff[0] = (parseInt(b[0]) - parseInt(a[0])) + 'deg';
-        diff[1] = (parseInt(b[1]) - parseInt(a[1])) / parseInt(a[1]) * 100 + '%';
-        diff[2] = (parseInt(b[2]) - parseInt(a[2])) / parseInt(a[2]) * 100 + '%';
+        diff[1] = (parseInt(b[1]) - parseInt(a[1])) + '%';
+        diff[2] = (parseInt(b[2]) - parseInt(a[2])) + '%';
         return diff;
     }
 
