@@ -1,7 +1,11 @@
 class colorCode {
 
     constructor(...args) {
-        return this.set(...args);
+        if (typeof arguments[0] == 'string') {
+            return this.hex(...args);
+        } else {
+            return this.set(...args);
+        }
     }
 
     // general setter
@@ -42,7 +46,7 @@ class colorCode {
     // compare with another colorCode object
     // returns difference in hue, saturation and lightness in percentages
     // helps you transform color A into B through hue, saturation and lightness operations in scss
-    hslDelta(object) {
+    hslDeltaTo(object) {
         var a = this.rgbToHsl(this.red, this.green, this.blue);
         var b = object.rgbToHsl(object.red, object.green, object.blue);
         var diff = [];
