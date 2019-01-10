@@ -151,7 +151,13 @@ This can be used to write SCSS that will automatically derive colorB from colorA
 For ease of use, there is also a separate compare.js file that can be executed in node.js:
 
 ```
-node compare.js
+node node/compare.js
+```
+
+or using the batch file:
+
+```
+compare
 ```
 
 This will prompt for two hex values and return Hue, Sat, and Lit percentages.
