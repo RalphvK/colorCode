@@ -145,3 +145,13 @@ This means in order to get from colorA to colorB, you must:
 * Increase lightness by ~8.2%
 
 This can be used to write SCSS that will automatically derive colorB from colorA, making these two colors fully dynamic even without additional information from the designer.
+
+#### Compare script
+
+For ease of use, there is also a separate compare.js file that can be executed in node.js:
+
+```
+node compare.js
+```
+
+This will prompt for two hex values and return Hue, Sat, and Lit percentages.

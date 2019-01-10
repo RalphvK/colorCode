@@ -1,0 +1,22 @@
+{
+  "name": "colorcode",
+  "version": "1.0.0",
+  "description": "Simple color conversion library",
+  "main": "colorCode.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RalphvK/colorCode.git"
+  },
+  "author": "Ralph",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RalphvK/colorCode/issues"
+  },
+  "homepage": "https://github.com/RalphvK/colorCode#readme",
+  "dependencies": {
+    "prompt-input": "^3.0.0"
+  }
+}
