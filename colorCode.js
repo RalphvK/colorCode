@@ -1,4 +1,4 @@
-class colorCode {
+var colorCode = class {
 
     constructor(...args) {
         if (typeof arguments[0] == 'string') {
@@ -50,7 +50,7 @@ class colorCode {
         var a = this.rgbToHsl(this.red, this.green, this.blue);
         var b = object.rgbToHsl(object.red, object.green, object.blue);
         var diff = [];
-        diff[0] = (parseInt(b[0]) - parseInt(a[0])) / parseInt(a[0]) * 100 + '%';
+        diff[0] = (parseInt(b[0]) - parseInt(a[0])) + 'deg';
         diff[1] = (parseInt(b[1]) - parseInt(a[1])) / parseInt(a[1]) * 100 + '%';
         diff[2] = (parseInt(b[2]) - parseInt(a[2])) / parseInt(a[2]) * 100 + '%';
         return diff;
@@ -256,7 +256,7 @@ class colorCode {
             h /= 6;
         }
 
-        return [(h * 100 + 0.5) | 0, ((s * 100 + 0.5) | 0) + '%', ((l * 100 + 0.5) | 0) + '%'];
+        return [((h * 100) / 100 * 360 + 0.5) | 0, ((s * 100 + 0.5) | 0) + '%', ((l * 100 + 0.5) | 0) + '%'];
     }
 
     /**
