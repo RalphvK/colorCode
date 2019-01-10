@@ -160,4 +160,4 @@ or using the batch file:
 compare
 ```
 
-This will prompt for two hex values and return Hue, Sat, and Lit percentages.
+This will prompt for two hex values and return Hue, Sat, Lit percentages, as well as a generated scss line that will convert color A into color B.
