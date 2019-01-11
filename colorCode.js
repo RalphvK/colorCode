@@ -46,7 +46,7 @@ var colorCode = class {
     // compare with another colorCode object
     // returns difference in hue, saturation and lightness in percentages
     // helps you transform color A into B through hue, saturation and lightness operations in scss
-    hslDeltaTo(object) {
+    relativeHslTo(object) {
         var a = this.rgbToHsl(this.red, this.green, this.blue);
         var b = object.rgbToHsl(object.red, object.green, object.blue);
         var diff = [];
@@ -54,6 +54,54 @@ var colorCode = class {
         diff[1] = (parseInt(b[1]) - parseInt(a[1])) + '%';
         diff[2] = (parseInt(b[2]) - parseInt(a[2])) + '%';
         return diff;
+    }
+    
+    // compare with another colorCode object
+    // returns SCSS color operations to transform color into another color
+    scssTransformTo(variationColor) {
+        var baseColor = this.hex();
+        var diff = this.relativeHslTo(variationColor);
+        var output = '#' + baseColor.replace("#", "");
+        // hue
+        if (parseInt(diff[0]) !== 0) {
+            output = 'adjust-hue(' + output + ',' + diff[0] + ')';
+        }
+        // saturation
+        if (parseInt(diff[1]) > 0) {
+            output = 'saturate(' + output + ',' + diff[1] + ')';
+        } else if (parseInt(diff[1]) < 0) {
+            output = 'desaturate(' + output + ',' + diff[1].replace(/-/g, '') + ')';
+        }
+        // lightness
+        if (parseInt(diff[2]) > 0) {
+            output = 'lighten(' + output + ',' + diff[2] + ')';
+        } else if (parseInt(diff[2]) < 0) {
+            output = 'darken(' + output + ',' + diff[2].replace(/-/g, '') + ')';
+        }
+        return output + ';';
+    }
+
+    // returns SCSS color operations to transform color by provided HSL values
+    scssTransformBy(diff) {
+        var baseColor = this.hex();
+        var output = '#' + baseColor.replace("#", "");
+        // hue
+        if (parseInt(diff[0]) !== 0) {
+            output = 'adjust-hue(' + output + ',' + diff[0] + ')';
+        }
+        // saturation
+        if (parseInt(diff[1]) > 0) {
+            output = 'saturate(' + output + ',' + diff[1] + ')';
+        } else if (parseInt(diff[1]) < 0) {
+            output = 'desaturate(' + output + ',' + diff[1].replace(/-/g, '') + ')';
+        }
+        // lightness
+        if (parseInt(diff[2]) > 0) {
+            output = 'lighten(' + output + ',' + diff[2] + ')';
+        } else if (parseInt(diff[2]) < 0) {
+            output = 'darken(' + output + ',' + diff[2].replace(/-/g, '') + ')';
+        }
+        return output + ';';
     }
 
     // parse HEX string to set properties

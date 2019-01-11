@@ -12,43 +12,21 @@ var inputB = new Input({
     message: 'Variation color:'
 });
 
-function compare(hexA, hexB) {
-    var colorA = new colorCode(hexA);
-    var colorB = new colorCode(hexB);
-    // get percentage values required to transform color A into color B with HSL operations
-    return colorA.hslDeltaTo(colorB);
-}
-
-function generateScss(baseColor, diff) {
-    var output = '#'+baseColor.replace("#", "");
-    // hue
-    if (parseInt(diff[0]) !== 0) {
-        output = 'adjust-hue(' + output + ',' + diff[0] + ')';
-    }
-    // saturation
-    if (parseInt(diff[1]) > 0) {
-        output = 'saturate(' + output + ',' + diff[1] + ')';
-    } else if (parseInt(diff[1]) < 0) {
-        output = 'desaturate(' + output + ',' + diff[1].replace(/-/g, '') + ')';
-    }
-    // lightness
-    if (parseInt(diff[2]) > 0) {
-        output = 'lighten(' + output + ',' + diff[2] + ')';
-    } else if (parseInt(diff[2]) < 0) {
-        output = 'darken(' + output + ',' + diff[2].replace(/-/g, '') + ')';
-    }
-    return output + ';';
-}
-
 // async
 inputA.ask(function (answer) {
-    var colorA = answer;
+    var hexA = answer;
     inputB.ask(function (answer) {
-        var colorB = answer;
-        var diff = compare(colorA, colorB);
+        var hexB = answer;
+        // instantiate color objects
+        var colorA = new colorCode(hexA);
+        var colorB = new colorCode(hexB);
+        // get difference
+        var diff = colorA.relativeHslTo(colorB);
+        // output relative HSL
         console.log('\n\nHue: ' + diff[0]);
         console.log('Sat: ' + diff[1]);
         console.log('Lit: ' + diff[2]);
-        console.log('\n\n'+generateScss(colorA, diff));
+        // output SCSS
+        console.log('\n\n' + colorA.scssTransformBy(diff));
     });
 });

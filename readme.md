@@ -129,7 +129,7 @@ When converting a design into code, you might want it to be as dynamic as possib
 var colorA = new colorCode('#3e45f9');
 var colorB = new colorCode('#6b55fa');
 // get percentage values required to transform color A into color B with HSL operations
-colorA.hslDeltaTo(colorB);
+colorA.hslDifference(colorB);
 ```
 
 returns:
