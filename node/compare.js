@@ -27,6 +27,6 @@ inputA.ask(function (answer) {
         console.log('Sat: ' + diff[1]);
         console.log('Lit: ' + diff[2]);
         // output SCSS
-        console.log('\n\n' + colorA.scssTransformBy(diff));
+        console.log('\n\n $variantColor: ' + colorA.scssTransformBy(diff, '$baseColor'));
     });
 });

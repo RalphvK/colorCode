@@ -58,10 +58,20 @@ var colorCode = class {
     
     // compare with another colorCode object
     // returns SCSS color operations to transform color into another color
-    scssTransformTo(variationColor) {
+    // @param variationColor colorCode object
+    // @param colorVariable string used to reference color, equals base color HEX by default
+    scssTransformTo(variationColor, colorVariable) {
+        // get baseColor
         var baseColor = this.hex();
         var diff = this.relativeHslTo(variationColor);
-        var output = '#' + baseColor.replace("#", "");
+        // use color variable
+        if (colorVariable !== undefined) {
+            // start output
+            var output = colorVariable;
+        } else {
+            // start output
+            var output = '#' + baseColor.replace("#", "");
+        }
         // hue
         if (parseInt(diff[0]) !== 0) {
             output = 'adjust-hue(' + output + ',' + diff[0] + ')';
@@ -82,9 +92,19 @@ var colorCode = class {
     }
 
     // returns SCSS color operations to transform color by provided HSL values
-    scssTransformBy(diff) {
+    // @param diff array from relativeHslTo()
+    // @param colorString string used to reference color, equals base color HEX by default
+    scssTransformBy(diff, colorVariable) {
+        // get baseColor
         var baseColor = this.hex();
-        var output = '#' + baseColor.replace("#", "");
+        // use color variable
+        if (colorVariable !== undefined) {
+            // start output
+            var output = colorVariable;
+        } else {
+            // start output
+            var output = '#' + baseColor.replace("#", "");
+        }
         // hue
         if (parseInt(diff[0]) !== 0) {
             output = 'adjust-hue(' + output + ',' + diff[0] + ')';
