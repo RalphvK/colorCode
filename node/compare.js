@@ -21,7 +21,7 @@ inputA.ask(function (answer) {
         var colorA = new colorCode(hexA);
         var colorB = new colorCode(hexB);
         // display HSL values
-        console.log('\n\nBase HSL: '+colorA.getHslArray('decimal'));
+        console.log('\n\nBase HSL: '+colorA.getHslArray());
         console.log('Variant HSL: ' + colorB.getHslArray());
         // get difference
         var diff = colorA.relativeHslTo(colorB);
