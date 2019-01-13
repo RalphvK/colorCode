@@ -232,6 +232,24 @@ var colorCode = class {
         output += (this.alpha !== undefined) ? ',' + this.alpha + ')' : ')';
         return output;
     }
+    // returns array with HSL values
+    getHslArray(format = 'string') {
+        var hsl = this.rgbToHsl(this.red, this.green, this.blue);
+        if (format == 'string') {
+            var output = hsl;
+        } else if (format == 'integer') {
+            var output = [];
+            hsl.forEach(element => {
+                output.push(parseInt(element));
+            });
+        } else if (format == 'decimal') {
+            var output = [];
+            output[0] = parseInt(hsl[0]) / 360;
+            output[1] = parseInt(hsl[1]) / 100;
+            output[2] = parseInt(hsl[2]) / 100;
+        }
+        return output;
+    }
 
     // number to hex function
     numberToHex(number) {
